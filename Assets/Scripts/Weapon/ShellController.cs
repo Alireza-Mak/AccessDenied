@@ -15,10 +15,11 @@ public class ShellController : MonoBehaviour
         Rigidbody shellRigidbody = shellInstance.GetComponent<Rigidbody>();
 
         Vector3 ejectionDirection =
-            spawnPoint.forward * forwardRatio + spawnPoint.up * upRatio;
+            spawnPoint.forward * Random.Range(forwardRatio - 0.1f, forwardRatio + 0.1f) +
+            spawnPoint.up * Random.Range(upRatio - 1f, upRatio + 1f);
 
         shellRigidbody.AddForce(ejectionDirection * shellEjectionForce, ForceMode.Impulse);
 
-        Destroy(shellRigidbody, lifeTime);
+        Destroy(shellInstance, lifeTime);
     }
 }

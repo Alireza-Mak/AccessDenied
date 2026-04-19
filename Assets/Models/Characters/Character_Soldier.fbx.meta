@@ -160,9 +160,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -172,9 +172,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0.251497
-        functionName: OnShootFrame
+        functionName: ShootEvent
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 7185884531609360858, guid: 87ffac0b243dcd848abfdbe65faefc4e, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

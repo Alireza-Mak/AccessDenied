@@ -21,37 +21,26 @@ public class WeaponManager : MonoBehaviour
         }
 
         EquipWeapon(currentWeaponIndex);
+        Messenger<WeaponType>.Broadcast(GameEvent.WEAPON_CHANGED, currentWeapon.GetWeaponType());
     }
 
-    void Update()
+    public void StartFiring()
     {
-        if (currentWeapon == null)
-            return;
+        currentWeapon.OnPrimaryActionDown();
+    }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            currentWeapon.OnPrimaryActionDown();
-        }
-
-        if (Input.GetMouseButtonDown(1) && currentWeapon.GetWeaponType() == WeaponType.Sniper)
+    public void StartZooming()
+    {
+        if (currentWeapon.GetWeaponType() == WeaponType.Sniper)
         {
             currentWeapon.OnSecondaryActionDown();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            EquipWeaponByType(WeaponType.Pistol);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            EquipWeaponByType(WeaponType.Sniper);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            EquipWeaponByType(WeaponType.Knife);
-        }
+    public void SwitchWeapon(WeaponType weaponType)
+    {
+        EquipWeaponByType(weaponType);
+        Messenger<WeaponType>.Broadcast(GameEvent.WEAPON_CHANGED, weaponType);
     }
 
     public void EquipWeapon(int index)
@@ -76,7 +65,6 @@ public class WeaponManager : MonoBehaviour
         }
 
         currentWeapon.OnWeaponChanged();
-
     }
 
     public void EquipWeaponByType(WeaponType weaponType)
@@ -89,6 +77,12 @@ public class WeaponManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+
+    public void OnShootAnimationEvent()
+    {
+        currentWeapon.PlayMuzzleFlash();
     }
 
     public WeaponController GetCurrentWeapon()
