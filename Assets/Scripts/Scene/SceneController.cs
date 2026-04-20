@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
-    private int keyCards = 0;
+    public int KeyCards { get; private set; } = 0;
     public int MAX_KEY_CARDS = 3;
     public bool isTimerRunning = true;
     private float timeElapsed = 0f;
@@ -39,9 +39,9 @@ public class SceneController : MonoBehaviour
     }
     void OnKeyCardChanged(int value)
     {
-        keyCards += value;
-        uiManager.UpdateKeyCard(keyCards / (float)MAX_KEY_CARDS);
-        if (keyCards == MAX_KEY_CARDS)
+        KeyCards += value;
+        uiManager.UpdateKeyCard(KeyCards / (float)MAX_KEY_CARDS);
+        if (KeyCards == MAX_KEY_CARDS)
         {
             OnWinGame();
         }
@@ -49,12 +49,12 @@ public class SceneController : MonoBehaviour
     private void OnWinGame()
     {
         isTimerRunning = false;
-        uiManager.ShowWinPopup(timeElapsed, keyCards);
+        uiManager.ShowWinPopup(timeElapsed, KeyCards);
     }
     private void OnPlayerDead()
     {
         isTimerRunning = false;
-        uiManager.ShowGameOverPopup(timeElapsed, keyCards);
+        uiManager.ShowGameOverPopup(timeElapsed, KeyCards);
     }
     private void OnRestartGame()
     {

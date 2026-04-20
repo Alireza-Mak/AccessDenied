@@ -1811,8 +1811,8 @@ MonoBehaviour:
   jumpHeight: 0.5
   jumpTimeToApex: 0.3
   maximumNumberOfJumps: 1
-  walkSpeed: 3
-  runSpeed: 6
+  walkSpeed: 5
+  runSpeed: 12
 --- !u!114 &2283048508195670061
 MonoBehaviour:
   m_ObjectHideFlags: 0
