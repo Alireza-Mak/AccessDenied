@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91e41b38b6f9b99488173e77c23edda3
+guid: 6865aa5c5134d1947997c3860f4f6a17
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image Mar 29, 2026, 03_36_51 PM_1
+      name: close-normal
       rect:
         serializedVersion: 2
-        x: 128
-        y: 621
-        width: 1267
-        height: 88
+        x: 155
+        y: 297
+        width: 517
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ce9c299084cb9241a1a9860a5e740e5
-      internalID: -65024585
+      spriteID: ad35441651b2f2149806ce319332dec8
+      internalID: 1076031507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT Image Mar 29, 2026, 03_36_51 PM_0
+      name: close-hover
       rect:
         serializedVersion: 2
-        x: 142
-        y: 321
-        width: 1249
-        height: 94
+        x: 860
+        y: 297
+        width: 517
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 940b5506118786b458adcb2994691d56
-      internalID: -244384300
+      spriteID: d776d1ebfe9467647b963e0c850139e5
+      internalID: 1411286701
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fed3360d734da4d428a4274b23980469
+    spriteID: 377cd21476f5c7c459f352796857c8ec
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT Image Mar 29, 2026, 03_36_51 PM_0: -244384300
-      ChatGPT Image Mar 29, 2026, 03_36_51 PM_1: -65024585
+      close-hover: 1411286701
+      close-normal: 1076031507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

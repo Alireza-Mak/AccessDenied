@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91e41b38b6f9b99488173e77c23edda3
+guid: 397be999c336d034e943d8be522e2975
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,45 +110,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image Mar 29, 2026, 03_36_51 PM_1
+      name: InputButton-normal
       rect:
         serializedVersion: 2
-        x: 128
-        y: 621
-        width: 1267
-        height: 88
+        x: 0
+        y: 0
+        width: 647
+        height: 123
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ce9c299084cb9241a1a9860a5e740e5
-      internalID: -65024585
+      spriteID: b60307e12c766a340827ca1c66186b67
+      internalID: 216451923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT Image Mar 29, 2026, 03_36_51 PM_0
+      name: InputButton-hover
       rect:
         serializedVersion: 2
-        x: 142
-        y: 321
-        width: 1249
-        height: 94
+        x: 663
+        y: 0
+        width: 647
+        height: 123
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 940b5506118786b458adcb2994691d56
-      internalID: -244384300
+      spriteID: b829afe0b4fecfc40949200b251db7fa
+      internalID: 1844750662
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fed3360d734da4d428a4274b23980469
+    spriteID: fa21429a19fd080488f3c3bdb3ea7376
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT Image Mar 29, 2026, 03_36_51 PM_0: -244384300
-      ChatGPT Image Mar 29, 2026, 03_36_51 PM_1: -65024585
+      InputButton-hover: 1844750662
+      InputButton-normal: 216451923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
