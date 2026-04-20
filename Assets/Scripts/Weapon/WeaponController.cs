@@ -22,13 +22,13 @@ public abstract class WeaponController : MonoBehaviour
     public Transform FireSpawnPoint { get; private set; }
     public Transform ShellSpawnPoint { get; private set; }
     protected Camera playerCamera;
-    protected int currentAmmo;
+    public int CurrentNumbOfAmmo { get; private set; }
     protected bool isEquipped;
 
 
     private void Awake()
     {
-        currentAmmo = maxAmmo;
+        CurrentNumbOfAmmo = maxAmmo;
 
         Messenger<int>.AddListener(GameEvent.PICKUP_AMMO, OnIncreaseAmmo);
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -63,12 +63,14 @@ public abstract class WeaponController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.CompareTag("Enemy"))
+            Enemy enemy = hit.collider.GetComponentInParent<Enemy>();
+            if (enemy != null)
             {
-                Messenger.Broadcast(GameEvent.ENEMY_DEAD);
+                enemy.Die();
             }
             else
             {
+                if (hit.collider.isTrigger == true) return;
                 Quaternion rotation = Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
                 GameObject bulletInstance = Instantiate(bulletPrefab, hit.point, rotation);
                 Destroy(bulletInstance, 5f);
@@ -78,23 +80,24 @@ public abstract class WeaponController : MonoBehaviour
 
     private void OnIncreaseAmmo(int amount)
     {
-        currentAmmo = Mathf.Min(currentAmmo + amount, maxAmmo);
+        CurrentNumbOfAmmo = Mathf.Min(CurrentNumbOfAmmo + amount, maxAmmo);
         BroadcastAmmo();
     }
 
     private void DecreaseAmmo()
     {
-        currentAmmo--;
+        CurrentNumbOfAmmo--;
         BroadcastAmmo();
     }
 
     private void BroadcastAmmo()
     {
-        Messenger<float, float>.Broadcast(GameEvent.AMMO_CHANGED, currentAmmo, maxAmmo);
+        Messenger<float, float>.Broadcast(GameEvent.AMMO_CHANGED, CurrentNumbOfAmmo, maxAmmo);
     }
 
     public virtual void OnPrimaryActionDown()
     {
+        if (CurrentNumbOfAmmo <= 0) return;
         Fire();
     }
 
@@ -127,9 +130,7 @@ public abstract class WeaponController : MonoBehaviour
 
     public void PlayMuzzleFlash()
     {
-        if (weaponType != WeaponType.Knife)
-        {
-            FireSpawnPoint.GetChild(0).GetComponent<ParticleSystem>().Play();
-        }
+        if (weaponType == WeaponType.Knife || CurrentNumbOfAmmo <= 0) return;
+        FireSpawnPoint.GetChild(0).GetComponent<ParticleSystem>().Play();
     }
 }

@@ -23,7 +23,7 @@ public class KnifeController : WeaponController
             Enemy enemy = hit.GetComponentInParent<Enemy>();
             if (enemy != null)
             {
-                Messenger.Broadcast(GameEvent.ENEMY_DEAD);
+                enemy.Die();
                 break;
             }
         }

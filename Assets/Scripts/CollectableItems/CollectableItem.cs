@@ -5,7 +5,8 @@ public class CollectableItem : MonoBehaviour
     public enum ItemType
     {
         Health,
-        Ammo
+        Ammo,
+        keyCard
     }
 
     [Header("Item Settings")]
@@ -25,6 +26,10 @@ public class CollectableItem : MonoBehaviour
 
             case ItemType.Ammo:
                 Messenger<int>.Broadcast(GameEvent.PICKUP_AMMO, value);
+                break;
+
+            case ItemType.keyCard:
+                Messenger<int>.Broadcast(GameEvent.PICKUP_KEYCARD, value);
                 break;
         }
 

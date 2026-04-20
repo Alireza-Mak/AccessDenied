@@ -9,4 +9,9 @@ public static class GameEvent
     public static string PLAYER_DEAD = "PLAYER_DEAD";
     public static string ENEMY_DEAD = "ENEMY_DEAD";
     public static string RESTART_GAME = "RESTART_GAME";
+    public static string POPUP_OPENED = "POPUP_OPENED";
+    public static string POPUP_CLOSED = "POPUP_CLOSED";
+    public static string GAME_ACTIVE = "GAME_ACTIVE";
+    public static string GAME_INACTIVE = "GAME_INACTIVE";
+    public static string PICKUP_KEYCARD = "PICKUP_KEYCARD";
 }

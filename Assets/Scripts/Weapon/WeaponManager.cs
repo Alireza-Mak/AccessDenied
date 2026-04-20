@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     [SerializeField] private WeaponController[] weapons;
+    [SerializeField] Animator Animator;
     [SerializeField] private int currentWeaponIndex = 0;
 
     private WeaponController currentWeapon;
@@ -26,6 +27,11 @@ public class WeaponManager : MonoBehaviour
 
     public void StartFiring()
     {
+        if (currentWeapon.CurrentNumbOfAmmo <= 0 && currentWeapon.GetWeaponType() != WeaponType.Knife)
+        {
+            return;
+        }
+        Animator.SetTrigger("shoot");
         currentWeapon.OnPrimaryActionDown();
     }
 

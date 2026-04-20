@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public List<Transform> WayPoints { get; private set; }
     public Animator EnemyAC { get; private set; }
     private int waypointIndex = 0;
+    private bool isDead = false;
 
     [Header("Enemy Setting")]
     public float IdleTime = 3.0f;
@@ -20,15 +21,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] WeaponManager WeaponManager;
 
-
-    void Awake()
-    {
-        Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
-    }
-    void OnDestroy()
-    {
-        Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemyDead);
-    }
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -37,14 +29,24 @@ public class Enemy : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
 
         WayPoints = new List<Transform>();
-        GameObject waypointsParent = GameObject.FindGameObjectWithTag("WayPoints");
+        GameObject waypointsParent = transform.parent.Find("WayPoints").gameObject;
         foreach (Transform t in waypointsParent.transform)
         {
             WayPoints.Add(t);
         }
     }
-    public void OnEnemyDead()
+
+
+    public void Die()
     {
+
+        if (isDead)
+        {
+            return;
+        }
+        isDead = true;
+        Messenger.Broadcast(GameEvent.ENEMY_DEAD);
+
         Agent.isStopped = true;
         EnemyAC.SetTrigger("die");
     }

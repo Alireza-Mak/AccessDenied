@@ -7,7 +7,7 @@ public enum RotationAxes
     MouseY
 }
 
-public class MouseMovement : MonoBehaviour
+public class MouseMovement : ActiveDuringGameplay
 {
     [Header("Rotation Settings")]
     [SerializeField] private RotationAxes rotationAxes = RotationAxes.MouseXAndY;

@@ -1,18 +1,15 @@
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : ActiveDuringGameplay
 {
     private int health;
     public static readonly int maxHealth = 5;
     [SerializeField] private WeaponManager WeaponManager;
-    public Animator Animator { get; private set; }
 
     private void Awake()
     {
         Messenger<int>.AddListener(GameEvent.PICKUP_HEALTH, OnPickupHealth);
         health = maxHealth;
-        Animator = GetComponent<Animator>();
-
     }
 
     private void Update()
@@ -26,7 +23,6 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             WeaponManager.StartFiring();
-            Animator.SetTrigger("shoot");
         }
 
         // Fire = Right Mouse Button
