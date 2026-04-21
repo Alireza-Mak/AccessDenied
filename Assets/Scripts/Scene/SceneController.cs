@@ -48,12 +48,12 @@ public class SceneController : MonoBehaviour
     private void OnWinGame()
     {
         isTimerRunning = false;
-        uiManager.ShowWinPopup(timeElapsed, KeyCards);
+        uiManager.ShowWinPopup(timeElapsed, KeyCards, score);
     }
     private void OnPlayerDead()
     {
         isTimerRunning = false;
-        uiManager.ShowGameOverPopup(timeElapsed, KeyCards);
+        uiManager.ShowGameOverPopup(timeElapsed, KeyCards, score);
     }
     private void OnRestartGame()
     {

@@ -96,17 +96,15 @@ public class UIManager : MonoBehaviour
         accesskeyBar.fillAmount = keyCards;
     }
 
-    public void ShowGameOverPopup(float timer, int keys)
+    public void ShowGameOverPopup(float timer, int keys, int score)
     {
         gameOverPopup.Open();
-        gameOverPopup.UpdateTimer(TimeConvertor(timer));
-        gameOverPopup.UpdateAccessKeys(keys.ToString());
+        gameOverPopup.UpdateRecords(TimeConvertor(timer), keys.ToString(), score.ToString());
     }
-    public void ShowWinPopup(float timer, int keys)
+    public void ShowWinPopup(float timer, int keys, int score)
     {
         winPopup.Open();
-        winPopup.UpdateTimer(TimeConvertor(timer));
-        winPopup.UpdateAccessKeys(keys.ToString());
+        winPopup.UpdateRecords(TimeConvertor(timer), keys.ToString(), score.ToString());
     }
     public void OnPopupOpened()
     {

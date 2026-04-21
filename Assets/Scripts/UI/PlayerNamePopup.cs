@@ -21,7 +21,7 @@ public class PlayerNamePopup : BasePopup
         confirmButton.interactable = !string.IsNullOrWhiteSpace(nameInput.text);
     }
 
-    public void OnConfirm()
+    public void OnConfirmButton()
     {
         string enteredName = nameInput.text.Trim();
 
@@ -29,10 +29,11 @@ public class PlayerNamePopup : BasePopup
             return;
 
         uiManager.UpdatePlayerName(enteredName);
+        nameInput.text = "";
         Close();
     }
 
-    public void OnClose()
+    public void OnCloseButton()
     {
         nameInput.text = "";
         Close();

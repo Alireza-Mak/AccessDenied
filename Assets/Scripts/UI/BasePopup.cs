@@ -1,9 +1,9 @@
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
 public class BasePopup : MonoBehaviour
 {
-
     virtual public void Open()
     {
         if (this == null || gameObject == null) return;
@@ -34,7 +34,6 @@ public class BasePopup : MonoBehaviour
         }
     }
 
-
     virtual public void OnQuitButton()
     {
         GameSession.ResetSession();
@@ -45,10 +44,25 @@ public class BasePopup : MonoBehaviour
 #endif
 
     }
+
     virtual public void OnRetryButton()
     {
         Close();
         Messenger.Broadcast(GameEvent.RESTART_GAME);
+    }
+
+    virtual public void OnHomeButton()
+    {
+        GameSession.ResetSession();
+        Messenger.Broadcast(GameEvent.RESTART_GAME);
+    }
+
+    virtual public void UpdateRecords(string timer, string keys, string score)
+    {
+        Transform recordsContainer = transform.Find("RecordsContainer");
+        recordsContainer.Find("TimerValue").GetComponent<TextMeshProUGUI>().text = timer;
+        recordsContainer.Find("KeysValue").GetComponent<TextMeshProUGUI>().text = keys;
+        recordsContainer.Find("ScoreValue").GetComponent<TextMeshProUGUI>().text = score;
     }
 
     public bool IsActive()
