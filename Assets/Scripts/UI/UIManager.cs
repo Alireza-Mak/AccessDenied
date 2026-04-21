@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Popup Window Settings")]
     [SerializeField] private GameOverPopup gameOverPopup;
+    [SerializeField] private StartGamePopup startGamePopup;
     [SerializeField] private WinPopup winPopup;
 
     [Header("Weapon Settings")]
@@ -23,10 +24,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image accesskeyBar;
     [SerializeField] private GameObject zoomVignette;
     [SerializeField] private GameObject crosshair;
+    [SerializeField] private TextMeshProUGUI playerNameText;
 
     private int popupsActive = 0;
-
-
+    private string playerName = "";
 
 
     private void Awake()
@@ -41,9 +42,14 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        startGamePopup.Open();
     }
+    public void UpdatePlayerName(string name)
+    {
+        playerName = name;
+        playerNameText.text = name;
+    }
+
 
     private void OnAmmoChanged(float numOfAmmo, float maxAmmo)
     {

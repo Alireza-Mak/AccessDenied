@@ -18,7 +18,6 @@ public class SceneController : MonoBehaviour
         Messenger.AddListener(GameEvent.RESTART_GAME, OnRestartGame);
         Messenger<int>.AddListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
-
     }
 
     private void OnDestroy()
