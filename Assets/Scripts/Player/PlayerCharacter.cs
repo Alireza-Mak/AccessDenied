@@ -6,8 +6,9 @@ public class PlayerCharacter : ActiveDuringGameplay
     public static readonly int maxHealth = 5;
     [SerializeField] private WeaponManager WeaponManager;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Messenger<int>.AddListener(GameEvent.PICKUP_HEALTH, OnPickupHealth);
         health = maxHealth;
     }
@@ -82,8 +83,9 @@ public class PlayerCharacter : ActiveDuringGameplay
         }
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         Messenger<int>.RemoveListener(GameEvent.PICKUP_HEALTH, OnPickupHealth);
     }
 }

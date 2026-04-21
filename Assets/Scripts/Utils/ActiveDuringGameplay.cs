@@ -3,12 +3,12 @@ using UnityEngine;
 public class ActiveDuringGameplay : MonoBehaviour
 
 {
-    void Awake()
+    protected virtual void Awake()
     {
         Messenger.AddListener(GameEvent.GAME_ACTIVE, OnGameActive);
         Messenger.AddListener(GameEvent.GAME_INACTIVE, OnGameInctive);
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.GAME_ACTIVE, OnGameActive);
         Messenger.RemoveListener(GameEvent.GAME_INACTIVE, OnGameInctive);
