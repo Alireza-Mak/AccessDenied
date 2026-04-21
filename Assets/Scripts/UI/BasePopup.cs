@@ -65,6 +65,14 @@ public class BasePopup : MonoBehaviour
         recordsContainer.Find("ScoreValue").GetComponent<TextMeshProUGUI>().text = score;
     }
 
+    virtual public void OnInfoButton()
+    {
+        Close();
+        InfoPopup infoPopup = GameObject.FindAnyObjectByType<InfoPopup>(FindObjectsInactive.Include);
+        infoPopup.Open();
+        infoPopup.SetPreviousPopup(this);
+    }
+
     public bool IsActive()
     {
         return this != null && gameObject != null && gameObject.activeSelf;

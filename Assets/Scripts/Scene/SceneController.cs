@@ -18,6 +18,7 @@ public class SceneController : MonoBehaviour
         Messenger.AddListener(GameEvent.RESTART_GAME, OnRestartGame);
         Messenger<int>.AddListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
+        Messenger.AddListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
     }
 
     private void OnDestroy()
@@ -27,6 +28,7 @@ public class SceneController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.RESTART_GAME, OnRestartGame);
         Messenger<int>.RemoveListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
         Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
+        Messenger.RemoveListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
     }
 
     private void Update()
@@ -40,15 +42,16 @@ public class SceneController : MonoBehaviour
     {
         KeyCards += value;
         uiManager.UpdateKeyCard(KeyCards / (float)MAX_KEY_CARDS);
-        if (KeyCards == MAX_KEY_CARDS)
-        {
-            OnWinGame();
-        }
+
     }
     private void OnWinGame()
     {
-        isTimerRunning = false;
-        uiManager.ShowWinPopup(timeElapsed, KeyCards, score);
+        if (KeyCards == MAX_KEY_CARDS)
+        {
+            isTimerRunning = false;
+            uiManager.ShowWinPopup(timeElapsed, KeyCards, score);
+        }
+
     }
     private void OnPlayerDead()
     {

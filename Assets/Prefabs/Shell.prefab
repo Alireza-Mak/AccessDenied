@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa68a4fab2591164fa4865a247f080c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellEjectionForce: 2
+  shellEjectionForce: 1
   lifeTime: 3
   forwardRatio: 0.1
   upRatio: -2

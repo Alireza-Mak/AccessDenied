@@ -14,4 +14,5 @@ public static class GameEvent
     public static string GAME_ACTIVE = "GAME_ACTIVE";
     public static string GAME_INACTIVE = "GAME_INACTIVE";
     public static string PICKUP_KEYCARD = "PICKUP_KEYCARD";
+    public static string PICKUP_FLOPPY = "PICKUP_FLOPPY";
 }
