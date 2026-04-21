@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public enum WeaponType
 {
@@ -73,6 +72,19 @@ public abstract class WeaponController : MonoBehaviour
                 if (hit.collider.isTrigger == true) return;
                 Quaternion rotation = Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
                 GameObject bulletInstance = Instantiate(bulletPrefab, hit.point, rotation);
+                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                if (rb != null && !rb.isKinematic)
+                {
+                    float force = 3f; // adjust based on feel
+
+                    // Apply impact force at the exact hit point
+                    rb.AddForceAtPosition(ray.direction * force, hit.point, ForceMode.Impulse);
+
+                    // Optional: add a bit of spin for realism
+                    rb.AddTorque(Random.insideUnitSphere * 50f, ForceMode.Impulse);
+                    Destroy(bulletInstance, 0.05f);
+                    return;
+                }
                 Destroy(bulletInstance, 5f);
             }
         }

@@ -41,12 +41,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameSession.HasStartedBefore && !string.IsNullOrWhiteSpace(GameSession.PlayerName))
-        {
-            UpdatePlayerName(GameSession.PlayerName);
-            return;
-        }
-        startGamePopup.Open();
+        //if (GameSession.HasStartedBefore && !string.IsNullOrWhiteSpace(GameSession.PlayerName))
+        //{
+        //    UpdatePlayerName(GameSession.PlayerName);
+        //    return;
+        //}
+        //startGamePopup.Open();
     }
     public void UpdatePlayerName(string name)
     {

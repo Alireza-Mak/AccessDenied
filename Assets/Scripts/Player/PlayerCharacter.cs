@@ -5,6 +5,7 @@ public class PlayerCharacter : ActiveDuringGameplay
     private int health;
     public static readonly int maxHealth = 5;
     [SerializeField] private WeaponManager WeaponManager;
+    private float pushForce = 5.0f;
 
     protected override void Awake()
     {
@@ -87,5 +88,15 @@ public class PlayerCharacter : ActiveDuringGameplay
     {
         base.OnDestroy();
         Messenger<int>.RemoveListener(GameEvent.PICKUP_HEALTH, OnPickupHealth);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        // does it have a rigidbody and is Physics enabled?
+        if (body != null && !body.isKinematic)
+        {
+            body.linearVelocity = hit.moveDirection * pushForce;
+        }
     }
 }
