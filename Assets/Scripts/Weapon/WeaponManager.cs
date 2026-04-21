@@ -31,8 +31,11 @@ public class WeaponManager : MonoBehaviour
         {
             return;
         }
+        if (!currentWeapon.CanFire())
+            return;
         Animator.SetTrigger("shoot");
         currentWeapon.OnPrimaryActionDown();
+        Messenger<WeaponType>.Broadcast(GameEvent.ATTACK, currentWeapon.GetWeaponType());
     }
 
     public void StartZooming()
@@ -45,6 +48,7 @@ public class WeaponManager : MonoBehaviour
 
     public void SwitchWeapon(WeaponType weaponType)
     {
+        SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxSwapWeapon);
         EquipWeaponByType(weaponType);
         Messenger<WeaponType>.Broadcast(GameEvent.WEAPON_CHANGED, weaponType);
     }

@@ -21,7 +21,11 @@ public class SniperController : WeaponController
 
     public override void Unequip()
     {
-        ResetZoom();
+        if (isZoomed)
+        {
+            ResetZoom();
+
+        }
         base.Unequip();
     }
 

@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
         //    return;
         //}
         //startGamePopup.Open();
+        SoundManager.Instance.PlayMusic(SoundLibrary.Instance.music1);
     }
     public void UpdatePlayerName(string name)
     {
@@ -86,6 +87,7 @@ public class UIManager : MonoBehaviour
 
     private void OnZoomChanged(bool isZoom)
     {
+        SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxZoom);
         zoomVignette.SetActive(isZoom);
         crosshair.SetActive(!isZoom);
     }

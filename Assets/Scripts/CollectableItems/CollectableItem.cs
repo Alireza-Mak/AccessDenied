@@ -22,17 +22,21 @@ public class CollectableItem : MonoBehaviour
         switch (itemType)
         {
             case ItemType.Health:
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxCollectHealth);
                 Messenger<int>.Broadcast(GameEvent.PICKUP_HEALTH, value);
                 break;
 
             case ItemType.Ammo:
                 Messenger<int>.Broadcast(GameEvent.PICKUP_AMMO, value);
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxCollectAmmo);
                 break;
 
             case ItemType.KeyCard:
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxCollectKey);
                 Messenger<int>.Broadcast(GameEvent.PICKUP_KEYCARD, value);
                 break;
             case ItemType.Floppy:
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxCollectFloppy);
                 Messenger.Broadcast(GameEvent.PICKUP_FLOPPY);
                 break;
         }

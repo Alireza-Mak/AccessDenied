@@ -2492,6 +2492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2455574437765013514, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
+      propertyPath: fireCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4409970877975469453, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2531,6 +2535,10 @@ PrefabInstance:
     - target: {fileID: 4409970877975469453, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
+      propertyPath: fireCooldown
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: zoomFieldOfView

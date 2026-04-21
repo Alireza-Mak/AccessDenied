@@ -17,6 +17,9 @@ public abstract class WeaponController : MonoBehaviour
     [SerializeField] GameObject shellPrefab;
     [SerializeField] GameObject bulletPrefab;
 
+    [Header("Cooldown Settings")]
+    [SerializeField] protected float fireCooldown = 1f;
+    private float lastFireTime = -Mathf.Infinity;
 
     public Transform FireSpawnPoint { get; private set; }
     public Transform ShellSpawnPoint { get; private set; }
@@ -33,6 +36,19 @@ public abstract class WeaponController : MonoBehaviour
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ShellSpawnPoint = transform.Find("ShellSpawnPoint");
         FireSpawnPoint = transform.Find("FireSpawnPoint");
+
+        switch (weaponType)
+        {
+            case WeaponType.Pistol:
+                fireCooldown = 1f;
+                break;
+            case WeaponType.Sniper:
+                fireCooldown = 1.5f;
+                break;
+            case WeaponType.Knife:
+                fireCooldown = 0.5f;
+                break;
+        }
     }
 
     private void Start()
@@ -110,8 +126,23 @@ public abstract class WeaponController : MonoBehaviour
     public virtual void OnPrimaryActionDown()
     {
         if (CurrentNumbOfAmmo <= 0) return;
+        Cooldown();
         Fire();
     }
+
+    protected void Cooldown()
+    {
+        if (Time.time < lastFireTime + fireCooldown)
+            return;
+
+        lastFireTime = Time.time;
+    }
+
+    public bool CanFire()
+    {
+        return Time.time >= lastFireTime + fireCooldown;
+    }
+
 
     public virtual void OnSecondaryActionDown() { }
 

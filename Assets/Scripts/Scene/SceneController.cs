@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class SceneController : MonoBehaviour
 {
@@ -19,6 +18,71 @@ public class SceneController : MonoBehaviour
         Messenger<int>.AddListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
         Messenger.AddListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
+        Messenger<WeaponType>.AddListener(GameEvent.ATTACK, OnAttackEnemy);
+    }
+
+    private void Update()
+    {
+        if (!isTimerRunning) return;
+
+        timeElapsed += Time.deltaTime;
+        uiManager.UpdateTimerUI(timeElapsed);
+    }
+
+    public void OnPlaySfx(AudioClip clip)
+    {
+        SoundManager.Instance.PlaySfx(clip);
+    }
+
+    void OnKeyCardChanged(int value)
+    {
+        KeyCards += value;
+        uiManager.UpdateKeyCard(KeyCards / (float)MAX_KEY_CARDS);
+
+    }
+
+    private void OnWinGame()
+    {
+        if (KeyCards == MAX_KEY_CARDS)
+        {
+            isTimerRunning = false;
+            uiManager.ShowWinPopup(timeElapsed, KeyCards, score);
+        }
+
+    }
+
+    private void OnPlayerDead()
+    {
+        isTimerRunning = false;
+        uiManager.ShowGameOverPopup(timeElapsed, KeyCards, score);
+    }
+
+    private void OnRestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void OnEnemeyDead()
+    {
+        score++;
+        uiManager.UpdateScore(score);
+    }
+
+    void OnAttackEnemy(WeaponType wt)
+    {
+        switch (wt)
+        {
+            case WeaponType.Sniper:
+                OnPlaySfx(SoundLibrary.Instance.sfxSniper);
+                break;
+            case WeaponType.Pistol:
+                OnPlaySfx(SoundLibrary.Instance.sfxPistol);
+                break;
+            case WeaponType.Knife:
+                OnPlaySfx(SoundLibrary.Instance.sfxKnife);
+                break;
+
+        }
     }
 
     private void OnDestroy()
@@ -29,43 +93,6 @@ public class SceneController : MonoBehaviour
         Messenger<int>.RemoveListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
         Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
         Messenger.RemoveListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
-    }
-
-    private void Update()
-    {
-        if (!isTimerRunning) return;
-
-        timeElapsed += Time.deltaTime;
-        uiManager.UpdateTimerUI(timeElapsed);
-    }
-    void OnKeyCardChanged(int value)
-    {
-        KeyCards += value;
-        uiManager.UpdateKeyCard(KeyCards / (float)MAX_KEY_CARDS);
-
-    }
-    private void OnWinGame()
-    {
-        if (KeyCards == MAX_KEY_CARDS)
-        {
-            isTimerRunning = false;
-            uiManager.ShowWinPopup(timeElapsed, KeyCards, score);
-        }
-
-    }
-    private void OnPlayerDead()
-    {
-        isTimerRunning = false;
-        uiManager.ShowGameOverPopup(timeElapsed, KeyCards, score);
-    }
-    private void OnRestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void OnEnemeyDead()
-    {
-        score++;
-        uiManager.UpdateScore(score);
+        Messenger<WeaponType>.RemoveListener(GameEvent.ATTACK, OnAttackEnemy);
     }
 }

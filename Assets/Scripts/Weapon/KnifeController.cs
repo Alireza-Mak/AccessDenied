@@ -10,7 +10,7 @@ public class KnifeController : WeaponController
     {
         if (!isEquipped)
             return;
-
+        Cooldown();
         MeleeAttack();
     }
 

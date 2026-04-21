@@ -724,6 +724,7 @@ MonoBehaviour:
   maxAmmo: 20
   shellPrefab: {fileID: 6837441818462419080, guid: aeb49ab7c5a737640919d9043e54971f, type: 3}
   bulletPrefab: {fileID: 5220373307440544145, guid: 14cd8ca0110d8a9469c1d3e4dedc32dc, type: 3}
+  fireCooldown: 1
 --- !u!1 &1922038240231868630
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +894,7 @@ MonoBehaviour:
   maxAmmo: 10
   shellPrefab: {fileID: 6837441818462419080, guid: aeb49ab7c5a737640919d9043e54971f, type: 3}
   bulletPrefab: {fileID: 5220373307440544145, guid: 14cd8ca0110d8a9469c1d3e4dedc32dc, type: 3}
+  fireCooldown: 1
   zoomFieldOfView: 15
   normalFieldOfView: 60
 --- !u!1 &2316544066230887401
@@ -1155,6 +1157,7 @@ MonoBehaviour:
   maxAmmo: 0
   shellPrefab: {fileID: 0}
   bulletPrefab: {fileID: 0}
+  fireCooldown: 1
   attackRange: 1
 --- !u!1 &2443770800563876985
 GameObject:
