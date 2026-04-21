@@ -37,6 +37,7 @@ public class BasePopup : MonoBehaviour
 
     virtual public void OnQuitButton()
     {
+        GameSession.ResetSession();
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
