@@ -1777,7 +1777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4099238778515299135, guid: 2e4f2eeca6854d341a5575f5c01cfd3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.3
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4099238778515299135, guid: 2e4f2eeca6854d341a5575f5c01cfd3b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1785,7 +1785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4099238778515299135, guid: 2e4f2eeca6854d341a5575f5c01cfd3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4099238778515299135, guid: 2e4f2eeca6854d341a5575f5c01cfd3b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10124,7 +10124,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
