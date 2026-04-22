@@ -1808,11 +1808,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cc: {fileID: 4880215691007305144}
   anim: {fileID: 5364119052036008152}
-  jumpHeight: 0.5
+  jumpHeight: 0.2
   jumpTimeToApex: 0.3
   maximumNumberOfJumps: 1
-  walkSpeed: 5
-  runSpeed: 12
+  walkSpeed: 6
+  runSpeed: 9
 --- !u!114 &2283048508195670061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455574437765013514, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: fireCooldown
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4409970877975469453, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2538,11 +2538,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: fireCooldown
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: zoomFieldOfView
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842491850970999065, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
+      propertyPath: fireCooldown
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 9176017965102569380, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: Animator

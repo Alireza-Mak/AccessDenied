@@ -11,20 +11,26 @@ public class Enemy : MonoBehaviour
     public Animator EnemyAC { get; private set; }
     private int waypointIndex = 0;
     private bool isDead = false;
+    private const float difficultyDelta = 0.3f;
 
     [Header("Enemy Setting")]
     public float IdleTime = 3.0f;
-    public float ChaseRange = 40f;
-    public float AttackRange = 20f;
+    public float ChaseRange = 10f;
+    [SerializeField] float DefaultChaseRange = 20f;
+    public float AttackRange = 10f;
+    [SerializeField] float DefaultAttackRange = 10f;
 
     [Header("Weapon Setting")]
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] WeaponManager WeaponManager;
     [SerializeField] AudioSource audioSrc;
 
-    void Start()
+    void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
+    }
+    void Start()
+    {
         EnemyAC = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
         Agent.updateUpAxis = false;
@@ -36,8 +42,14 @@ public class Enemy : MonoBehaviour
         {
             WayPoints.Add(t);
         }
+        AttackRange = DefaultAttackRange;
+        ChaseRange = DefaultChaseRange;
     }
-
+    public void SetExplosionRadius(int value)
+    {
+        AttackRange = DefaultAttackRange + (value * difficultyDelta);
+        ChaseRange = DefaultChaseRange + (value * difficultyDelta);
+    }
 
     public void Die()
     {
@@ -51,18 +63,12 @@ public class Enemy : MonoBehaviour
 
         Agent.isStopped = true;
         EnemyAC.SetTrigger("die");
+        audioSrc.PlayOneShot(SoundLibrary.Instance.sfxEnemyDead);
     }
 
     private void DeadEvent()
     {
         Destroy(this.gameObject, 1f);
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Draw a sphere to show chase range in Scene
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, ChaseRange);
     }
 
     public void SetNextWaypoint()
@@ -101,5 +107,12 @@ public class Enemy : MonoBehaviour
 
         bulletInstance.GetComponent<BulletController>().Initialize(direction);
         audioSrc.PlayOneShot(SoundLibrary.Instance.sfxPistol);
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Draw a sphere to show chase range in Scene
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, ChaseRange);
     }
 }

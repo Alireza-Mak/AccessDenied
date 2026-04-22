@@ -6,8 +6,10 @@ public abstract class BaseExplosive : MonoBehaviour
     [Header("Explosion Settings")]
     [SerializeField] protected float triggerDelay = 0f;
     [SerializeField] protected float explosionRadius = 5f;
+    protected float baseExplosionRadius = 5f;
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected ParticleSystem explosionParticle;
+    private float difficultyDelta = 0.3f;
 
     protected AudioSource audioSource;
     protected bool isTriggered = false;
@@ -23,8 +25,13 @@ public abstract class BaseExplosive : MonoBehaviour
     protected virtual void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        explosionRadius = baseExplosionRadius;
     }
 
+    public void SetExplosionRadius(int value)
+    {
+        explosionRadius = baseExplosionRadius + (value * difficultyDelta);
+    }
     virtual protected void OnPlayerBulletHit(RaycastHit hit) { }
     protected IEnumerator ExplodeAfterDelay()
     {
@@ -55,8 +62,8 @@ public abstract class BaseExplosive : MonoBehaviour
         explosionParticle.Play();
         Destroy(explosionParticle.gameObject, 2f);
 
-
-        GetComponent<MeshRenderer>().enabled = false;
+        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+        meshRenderer.enabled = false;
 
         audioSource.PlayOneShot(SoundLibrary.Instance.explosion);
         Destroy(gameObject, SoundLibrary.Instance.explosion.length);

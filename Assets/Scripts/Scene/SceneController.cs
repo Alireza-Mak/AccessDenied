@@ -20,6 +20,12 @@ public class SceneController : MonoBehaviour
         Messenger.AddListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
         Messenger.AddListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
         Messenger<WeaponType>.AddListener(GameEvent.ATTACK, OnAttackEnemy);
+        Messenger<RaycastHit>.AddListener(GameEvent.PLAYER_BULLET_HIT, OnPlayerBulletHit);
+    }
+
+    private void Start()
+    {
+        OnDifficultyChanged(PlayerPrefs.GetInt(PP_DIFICULTY, 1));
     }
 
     private void Update()
@@ -47,7 +53,7 @@ public class SceneController : MonoBehaviour
         }
 
     }
-
+    public void OnPlayerBulletHit(RaycastHit hit) { }
     private void OnPlayerDead()
     {
         isTimerRunning = false;
@@ -82,7 +88,22 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    private void OnDifficultyChanged(int value) { }
+    private void OnDifficultyChanged(int value)
+    {
+
+        BaseExplosive[] explosives = GameObject.FindObjectsByType<BaseExplosive>(FindObjectsSortMode.None);
+        for (int i = 0; i < explosives.Length; i++)
+        {
+            BaseExplosive e = explosives[i];
+            e.SetExplosionRadius(value);
+        }
+        Enemy[] enemies = GameObject.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Enemy e = enemies[i];
+            e.SetExplosionRadius(value);
+        }
+    }
     public int GetDifficulty()
     {
         return PlayerPrefs.GetInt(PP_DIFICULTY, 1);
@@ -96,5 +117,6 @@ public class SceneController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.ENEMY_DEAD, OnEnemeyDead);
         Messenger.RemoveListener(GameEvent.PICKUP_FLOPPY, OnWinGame);
         Messenger<WeaponType>.RemoveListener(GameEvent.ATTACK, OnAttackEnemy);
+        Messenger<RaycastHit>.RemoveListener(GameEvent.PLAYER_BULLET_HIT, OnPlayerBulletHit);
     }
 }

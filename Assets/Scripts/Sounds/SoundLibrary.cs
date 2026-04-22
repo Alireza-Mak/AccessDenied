@@ -15,6 +15,7 @@ public class SoundLibrary : MonoBehaviour
     [SerializeField] public AudioClip explosion;
     [SerializeField] public AudioClip beep;
     [SerializeField] public AudioClip sfxHit;
+    [SerializeField] public AudioClip sfxEnemyDead;
 
     [SerializeField] public AudioClip music1;
     [SerializeField] public AudioClip music2;

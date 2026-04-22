@@ -14,14 +14,14 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Mine
+  - Explosive
+  - Health
+  - Ammo
+  - Ground
+  - Obstacles
+  - Key
   - 
   - 
   - 

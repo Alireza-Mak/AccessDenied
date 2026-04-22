@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 809400919963927349}
   - component: {fileID: 4197257911397568512}
   - component: {fileID: 4678745719867688946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 3559109804687037332}
   - component: {fileID: 4793403575161215824}
   - component: {fileID: 2787724457060328661}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthKit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   value: 1
+  baseRotationSpeed: 60
 --- !u!1001 &7128173089210133949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,6 +243,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f01afb6e18ea1649a184f7b81a096e5, type: 3}
       propertyPath: m_Name
       value: Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f01afb6e18ea1649a184f7b81a096e5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f01afb6e18ea1649a184f7b81a096e5, type: 3}
       propertyPath: m_IsActive

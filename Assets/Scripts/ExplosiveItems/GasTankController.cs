@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GasTankController : BaseExplosive
 {
-    override protected void OnPlayerBulletHit(RaycastHit hit)
+    protected override void OnPlayerBulletHit(RaycastHit hit)
     {
-        if (!hit.collider.gameObject.GetComponent<BaseExplosive>()) return;
+        BaseExplosive hitExplosive = hit.collider.GetComponentInParent<BaseExplosive>();
+        if (hitExplosive != this) return;
 
         StartExplosion();
     }
