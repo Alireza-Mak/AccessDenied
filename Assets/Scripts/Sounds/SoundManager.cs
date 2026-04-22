@@ -9,13 +9,14 @@ public class SoundManager : MonoBehaviour
     //// MEMBER VARS
     [SerializeField] private AudioSource sfxSource;     // for playing sfx
     [SerializeField] private AudioSource musicSource;   // for playing music
-    //[SerializeField] private AudioMixer mixer;
+    [SerializeField] private AudioMixer mixer;
 
     private float sfxVolume = 1.0f;     // for tracking sfx volume
     private float musicVolume = 1.0f;   // for tracking music volume
 
-    const string PP_MUSIC_VOL = "MusicVol";
-    const string PP_SFX_VOL = "SfxVol";
+    public static string PP_MUSIC_VOL = "MusicVol";
+    public static string PP_SFX_VOL = "SfxVol";
+    public static string PP_MUSIC_INX = "MusicIndex";
 
     //// MEMBER PROPERTIES
     //// a property to get/set sfx volume
@@ -25,7 +26,7 @@ public class SoundManager : MonoBehaviour
         set
         {
             sfxVolume = Mathf.Clamp(value, 0.0f, 1.0f);
-            //mixer.SetFloat("SfxVolume", LinearToLog(sfxVolume));
+            mixer.SetFloat("SfxVolume", LinearToLog(sfxVolume));
         }
     }
 
@@ -36,7 +37,7 @@ public class SoundManager : MonoBehaviour
         set
         {
             musicVolume = Mathf.Clamp(value, 0.0f, 1.0f);
-            //mixer.SetFloat("MusicVolume", LinearToLog(musicVolume));
+            mixer.SetFloat("MusicVolume", LinearToLog(musicVolume));
         }
     }
 
@@ -53,12 +54,17 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);    // destroy the SM that was about to be built
         }
     }
-
-    private void OnDestroy()
+    private void Start()
     {
-        // Save volume slider values [0..1] to PlayerPrefs
-        PlayerPrefs.SetFloat(PP_MUSIC_VOL, musicVolume);
-        PlayerPrefs.SetFloat(PP_SFX_VOL, sfxVolume);
+        int musicIndex = PlayerPrefs.GetInt(PP_MUSIC_INX, 0);
+        AudioClip[] musics =
+{
+        SoundLibrary.Instance.music1,
+        SoundLibrary.Instance.music2,
+        SoundLibrary.Instance.music3
+    };
+        PlayMusic(musics[musicIndex]);
+        Init();
     }
 
     private void Init()

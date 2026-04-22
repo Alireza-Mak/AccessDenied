@@ -36,6 +36,5 @@ public class PlayerNamePopup : BasePopup
     {
         nameInput.text = "";
         base.OnCloseButton();
-
     }
 }

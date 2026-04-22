@@ -79,8 +79,6 @@ public class BasePopup : MonoBehaviour
         return this != null && gameObject != null && gameObject.activeSelf;
     }
 
-
-
     virtual public void OnCloseButton()
     {
         Close();

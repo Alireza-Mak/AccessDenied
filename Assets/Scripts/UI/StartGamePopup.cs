@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class StartGamePopup : BasePopup
 {
-    [SerializeField] private PlayerNamePopup playerNamePopup;
     public void OnStartButton()
     {
         Close();
+        PlayerNamePopup playerNamePopup = UnityEngine.GameObject.FindAnyObjectByType<PlayerNamePopup>(UnityEngine.FindObjectsInactive.Include);
         playerNamePopup.Open();
+        playerNamePopup.SetPreviousPopup(this);
+    }
+    public void OnSetingsButton()
+    {
+        Close();
+        SettingsPopup settingsPopup = UnityEngine.GameObject.FindAnyObjectByType<SettingsPopup>(UnityEngine.FindObjectsInactive.Include);
+        settingsPopup.Open();
+        settingsPopup.SetPreviousPopup(this);
     }
 }

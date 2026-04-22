@@ -272,7 +272,7 @@ TextureImporter:
         width: 275
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -299,13 +299,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icons_11: 1652020727
-      Icons_13: 630799495
-      Icons_2: -1820515607
-      Icons_4: 1931372924
-      Icons_6: 1885324829
-      Icons_7: -808509053
-      Icons_9: 212665907
+      Icons_0: -854698532
+      Icons_1: -314169255
+      Icons_11: -1005789349
+      Icons_13: -685979800
+      Icons_2: 625123803
+      Icons_4: -894828322
+      Icons_6: -1463703187
+      Icons_7: -530604128
+      Icons_9: -795974442
       home: -209192242
       info: 1972337504
       option: -1086292775

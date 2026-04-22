@@ -9,10 +9,11 @@ public class SceneController : MonoBehaviour
     public bool isTimerRunning = true;
     private float timeElapsed = 0f;
     private int score = 0;
+    public static string PP_DIFICULTY = "Difficulty";
 
     private void Awake()
     {
-        //Messenger<int>.AddListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
+        Messenger<int>.AddListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
         Messenger.AddListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
         Messenger.AddListener(GameEvent.RESTART_GAME, OnRestartGame);
         Messenger<int>.AddListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);
@@ -29,10 +30,6 @@ public class SceneController : MonoBehaviour
         uiManager.UpdateTimerUI(timeElapsed);
     }
 
-    public void OnPlaySfx(AudioClip clip)
-    {
-        SoundManager.Instance.PlaySfx(clip);
-    }
 
     void OnKeyCardChanged(int value)
     {
@@ -73,21 +70,26 @@ public class SceneController : MonoBehaviour
         switch (wt)
         {
             case WeaponType.Sniper:
-                OnPlaySfx(SoundLibrary.Instance.sfxSniper);
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxSniper);
                 break;
             case WeaponType.Pistol:
-                OnPlaySfx(SoundLibrary.Instance.sfxPistol);
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxPistol);
                 break;
             case WeaponType.Knife:
-                OnPlaySfx(SoundLibrary.Instance.sfxKnife);
+                SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxKnife);
                 break;
 
         }
     }
 
+    private void OnDifficultyChanged(int value) { }
+    public int GetDifficulty()
+    {
+        return PlayerPrefs.GetInt(PP_DIFICULTY, 1);
+    }
     private void OnDestroy()
     {
-        //Messenger<int>.RemoveListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
+        Messenger<int>.RemoveListener(GameEvent.DIFFICULTY_CHANGED, OnDifficultyChanged);
         Messenger.RemoveListener(GameEvent.PLAYER_DEAD, OnPlayerDead);
         Messenger.RemoveListener(GameEvent.RESTART_GAME, OnRestartGame);
         Messenger<int>.RemoveListener(GameEvent.PICKUP_KEYCARD, OnKeyCardChanged);

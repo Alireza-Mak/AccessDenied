@@ -44,13 +44,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //if (GameSession.HasStartedBefore && !string.IsNullOrWhiteSpace(GameSession.PlayerName))
-        //{
-        //    UpdatePlayerName(GameSession.PlayerName);
-        //    return;
-        //}
-        //startGamePopup.Open();
-        SoundManager.Instance.PlayMusic(SoundLibrary.Instance.music1);
+        if (GameSession.HasStartedBefore && !string.IsNullOrWhiteSpace(GameSession.PlayerName))
+        {
+            UpdatePlayerName(GameSession.PlayerName);
+            return;
+        }
+        startGamePopup.Open();
     }
     private void Update()
     {
