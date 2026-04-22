@@ -263,6 +263,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: resume
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 333
+        width: 275
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1097696da6e94404bab3ae324776eec6
+      internalID: 1038731044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -288,6 +310,7 @@ TextureImporter:
       info: 1972337504
       option: -1086292775
       quit: -1108612493
+      resume: 1038731044
       retry: 420701465
       setting: -1352238353
       start: -1243735138

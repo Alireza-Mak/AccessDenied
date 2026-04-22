@@ -6,7 +6,6 @@ public class PlayerNamePopup : BasePopup
 {
     [SerializeField] private TMP_InputField nameInput;
     [SerializeField] private Button confirmButton;
-    [SerializeField] private StartGamePopup startGamePopup;
     private UIManager uiManager;
     private void Start()
     {
@@ -33,10 +32,10 @@ public class PlayerNamePopup : BasePopup
         Close();
     }
 
-    public void OnCloseButton()
+    public override void OnCloseButton()
     {
         nameInput.text = "";
-        Close();
-        startGamePopup.Open();
+        base.OnCloseButton();
+
     }
 }

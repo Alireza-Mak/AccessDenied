@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
     [Header("Popup Window Settings")]
     [SerializeField] private GameOverPopup gameOverPopup;
     [SerializeField] private StartGamePopup startGamePopup;
+    [SerializeField] private MainMenuPopup mainMenuPopup;
+    [SerializeField] private SettingsPopup settingsPopup;
+    [SerializeField] private InfoPopup infoPopup;
     [SerializeField] private WinPopup winPopup;
 
     [Header("Weapon Settings")]
@@ -49,6 +52,32 @@ public class UIManager : MonoBehaviour
         //startGamePopup.Open();
         SoundManager.Instance.PlayMusic(SoundLibrary.Instance.music1);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            if (settingsPopup != null && settingsPopup.IsActive())
+            {
+                settingsPopup.OnCloseButton();
+                return;
+            }
+
+            if (infoPopup != null && infoPopup.IsActive())
+            {
+                infoPopup.OnCloseButton();
+                return;
+            }
+
+            if (mainMenuPopup != null && mainMenuPopup.IsActive())
+            {
+                mainMenuPopup.Close();
+                return;
+            }
+
+            mainMenuPopup.Open();
+        }
+    }
     public void UpdatePlayerName(string name)
     {
         playerName = name;
@@ -56,7 +85,6 @@ public class UIManager : MonoBehaviour
         GameSession.PlayerName = name;
         GameSession.HasStartedBefore = true;
     }
-
 
     private void OnAmmoChanged(float numOfAmmo, float maxAmmo)
     {

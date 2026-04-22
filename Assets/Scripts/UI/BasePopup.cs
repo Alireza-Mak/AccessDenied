@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasePopup : MonoBehaviour
 {
+    private BasePopup previousPopup;
     virtual public void Open()
     {
         if (this == null || gameObject == null) return;
@@ -76,5 +77,21 @@ public class BasePopup : MonoBehaviour
     public bool IsActive()
     {
         return this != null && gameObject != null && gameObject.activeSelf;
+    }
+
+
+
+    virtual public void OnCloseButton()
+    {
+        Close();
+
+        if (previousPopup == null) return;
+
+        previousPopup.Open();
+    }
+
+    public void SetPreviousPopup(BasePopup prevPopup)
+    {
+        previousPopup = prevPopup;
     }
 }

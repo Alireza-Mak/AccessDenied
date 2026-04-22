@@ -87,7 +87,9 @@ public abstract class WeaponController : MonoBehaviour
             {
                 if (hit.collider.isTrigger == true) return;
                 Quaternion rotation = Quaternion.LookRotation(ray.direction) * Quaternion.Euler(90f, 0f, 0f);
-                GameObject bulletInstance = Instantiate(bulletPrefab, hit.point, rotation);
+                float embedAmount = 0.05f;
+                Vector3 spawnPosition = hit.point + ray.direction * embedAmount;
+                GameObject bulletInstance = Instantiate(bulletPrefab, spawnPosition, rotation);
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 if (rb != null && !rb.isKinematic)
                 {
