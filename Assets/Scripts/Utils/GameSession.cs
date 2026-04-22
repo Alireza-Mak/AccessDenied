@@ -1,6 +1,7 @@
 using UnityEditor;
-
+#if UNITY_EDITOR
 [InitializeOnLoad]
+#endif
 public static class GameSession
 {
     public static string PlayerName = "";
