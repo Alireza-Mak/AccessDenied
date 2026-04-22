@@ -17,4 +17,5 @@ public static class GameEvent
     public static string PICKUP_FLOPPY = "PICKUP_FLOPPY";
     public static string ATTACK = "ATTACK";
     public static string DIFFICULTY_CHANGED = "DIFFICULTY_CHANGED";
+    public static string PLAYER_BULLET_HIT = "PLAYER_BULLET_HIT";
 }

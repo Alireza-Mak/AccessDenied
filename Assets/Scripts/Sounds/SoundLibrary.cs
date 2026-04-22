@@ -12,6 +12,10 @@ public class SoundLibrary : MonoBehaviour
     [SerializeField] public AudioClip sfxCollectFloppy;
     [SerializeField] public AudioClip sfxSwapWeapon;
     [SerializeField] public AudioClip sfxZoom;
+    [SerializeField] public AudioClip explosion;
+    [SerializeField] public AudioClip beep;
+    [SerializeField] public AudioClip sfxHit;
+
     [SerializeField] public AudioClip music1;
     [SerializeField] public AudioClip music2;
     [SerializeField] public AudioClip music3;

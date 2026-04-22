@@ -78,6 +78,7 @@ public abstract class WeaponController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+            Messenger<RaycastHit>.Broadcast(GameEvent.PLAYER_BULLET_HIT, hit);
             Enemy enemy = hit.collider.GetComponentInParent<Enemy>();
             if (enemy != null)
             {

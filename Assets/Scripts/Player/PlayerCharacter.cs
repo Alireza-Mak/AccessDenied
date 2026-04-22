@@ -75,6 +75,7 @@ public class PlayerCharacter : ActiveDuringGameplay
     {
         health -= 1;
         Messenger<float, float>.Broadcast(GameEvent.HEALTH_CHANGED, health, maxHealth);
+        SoundManager.Instance.PlaySfx(SoundLibrary.Instance.sfxHit);
         if (health == 0)
         {
             if (health <= 0)

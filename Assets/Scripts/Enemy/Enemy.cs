@@ -20,11 +20,13 @@ public class Enemy : MonoBehaviour
     [Header("Weapon Setting")]
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] WeaponManager WeaponManager;
+    [SerializeField] AudioSource audioSrc;
 
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
         EnemyAC = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
         Agent.updateUpAxis = false;
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -98,5 +100,6 @@ public class Enemy : MonoBehaviour
         GameObject bulletInstance = Instantiate(bulletPrefab, spawnPos, rotation);
 
         bulletInstance.GetComponent<BulletController>().Initialize(direction);
+        audioSrc.PlayOneShot(SoundLibrary.Instance.sfxPistol);
     }
 }
