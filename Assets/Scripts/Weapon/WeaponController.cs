@@ -36,19 +36,6 @@ public abstract class WeaponController : MonoBehaviour
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ShellSpawnPoint = transform.Find("ShellSpawnPoint");
         FireSpawnPoint = transform.Find("FireSpawnPoint");
-
-        switch (weaponType)
-        {
-            case WeaponType.Pistol:
-                fireCooldown = 1f;
-                break;
-            case WeaponType.Sniper:
-                fireCooldown = 1.5f;
-                break;
-            case WeaponType.Knife:
-                fireCooldown = 0.5f;
-                break;
-        }
     }
 
     private void Start()
@@ -111,7 +98,7 @@ public abstract class WeaponController : MonoBehaviour
 
     private void OnIncreaseAmmo(int amount)
     {
-        CurrentNumbOfAmmo = Mathf.Min(CurrentNumbOfAmmo + amount, maxAmmo);
+        CurrentNumbOfAmmo = amount + CurrentNumbOfAmmo > maxAmmo ? maxAmmo : amount + CurrentNumbOfAmmo;
         BroadcastAmmo();
     }
 
