@@ -1826,8 +1826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAxes: 1
-  horizontalSensitivity: 9
-  verticalSensitivity: 9
+  horizontalSensitivity: 6
+  verticalSensitivity: 6
   minVerticalAngle: -45
   maxVerticalAngle: 45
 --- !u!114 &61627664009371585
@@ -2494,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455574437765013514, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: fireCooldown
-      value: 0.25
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4409970877975469453, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2538,7 +2538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: fireCooldown
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6890080910744398545, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: zoomFieldOfView
@@ -2546,7 +2546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7842491850970999065, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: fireCooldown
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9176017965102569380, guid: 9b338df20f751c84db6dbe27b0cb697e, type: 3}
       propertyPath: Animator

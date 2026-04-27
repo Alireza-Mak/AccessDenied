@@ -5,6 +5,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private WeaponController[] weapons;
     [SerializeField] Animator Animator;
     [SerializeField] private int currentWeaponIndex = 0;
+    [SerializeField] private float mouseSensitivityRate = 4f;
 
     private WeaponController currentWeapon;
 
@@ -43,6 +44,14 @@ public class WeaponManager : MonoBehaviour
         if (currentWeapon.GetWeaponType() == WeaponType.Sniper)
         {
             currentWeapon.OnSecondaryActionDown();
+            if (currentWeapon.GetComponent<SniperController>().IsZoomed)
+            {
+                GameObject.FindAnyObjectByType<MouseMovement>().ChangeSensitivity(mouseSensitivityRate);
+            }
+            else
+            {
+                GameObject.FindAnyObjectByType<MouseMovement>().ChangeSensitivity(1 / mouseSensitivityRate);
+            }
         }
     }
 

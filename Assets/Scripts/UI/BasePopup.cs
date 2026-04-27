@@ -92,4 +92,8 @@ public class BasePopup : MonoBehaviour
     {
         previousPopup = prevPopup;
     }
+    public BasePopup GetPreviousPopup()
+    {
+        return previousPopup;
+    }
 }

@@ -98,8 +98,11 @@ public abstract class WeaponController : MonoBehaviour
 
     private void OnIncreaseAmmo(int amount)
     {
-        CurrentNumbOfAmmo = amount + CurrentNumbOfAmmo > maxAmmo ? maxAmmo : amount + CurrentNumbOfAmmo;
-        BroadcastAmmo();
+        if (isEquipped)
+        {
+            CurrentNumbOfAmmo = Mathf.Min(CurrentNumbOfAmmo + amount, maxAmmo);
+            BroadcastAmmo();
+        }
     }
 
     private void DecreaseAmmo()

@@ -56,25 +56,16 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
-            if (settingsPopup != null && settingsPopup.IsActive())
+            BasePopup currentPopup = FindAnyObjectByType<BasePopup>();
+            if (currentPopup != null)
             {
-                settingsPopup.OnCloseButton();
-                return;
+                if (currentPopup.GetType() == typeof(StartGamePopup)) return;
+                currentPopup.OnCloseButton();
             }
-
-            if (infoPopup != null && infoPopup.IsActive())
+            else
             {
-                infoPopup.OnCloseButton();
-                return;
+                mainMenuPopup.Open();
             }
-
-            if (mainMenuPopup != null && mainMenuPopup.IsActive())
-            {
-                mainMenuPopup.Close();
-                return;
-            }
-
-            mainMenuPopup.Open();
         }
     }
     public void UpdatePlayerName(string name)

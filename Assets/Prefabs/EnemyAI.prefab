@@ -628,14 +628,13 @@ GameObject:
   - component: {fileID: 902257120402495719}
   - component: {fileID: 7440873790381795626}
   - component: {fileID: 5848597126880326075}
-  - component: {fileID: 8896433576249453710}
   m_Layer: 6
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &902257120402495719
 Transform:
   m_ObjectHideFlags: 0
@@ -708,23 +707,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8896433576249453710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881678446649572495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d0b71abed0a79f46b77b9f999023968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 0
-  maxAmmo: 20
-  shellPrefab: {fileID: 6837441818462419080, guid: aeb49ab7c5a737640919d9043e54971f, type: 3}
-  bulletPrefab: {fileID: 5220373307440544145, guid: 14cd8ca0110d8a9469c1d3e4dedc32dc, type: 3}
-  fireCooldown: 1
 --- !u!1 &1922038240231868630
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +780,6 @@ GameObject:
   - component: {fileID: 2958175746578374409}
   - component: {fileID: 141202772101053476}
   - component: {fileID: 1568246450025529584}
-  - component: {fileID: 8280431802035245503}
   m_Layer: 6
   m_Name: Sniper
   m_TagString: Untagged
@@ -878,25 +859,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8280431802035245503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256435846916412923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d080010137494f44a85e7e3e918847b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 1
-  maxAmmo: 10
-  shellPrefab: {fileID: 6837441818462419080, guid: aeb49ab7c5a737640919d9043e54971f, type: 3}
-  bulletPrefab: {fileID: 5220373307440544145, guid: 14cd8ca0110d8a9469c1d3e4dedc32dc, type: 3}
-  fireCooldown: 1
-  zoomFieldOfView: 15
-  normalFieldOfView: 60
 --- !u!1 &2316544066230887401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +969,7 @@ MonoBehaviour:
   AttackRange: 5
   DefaultAttackRange: 5
   bulletPrefab: {fileID: 5220373307440544145, guid: 14cd8ca0110d8a9469c1d3e4dedc32dc, type: 3}
-  WeaponManager: {fileID: 3330424772406274942}
+  enemyWeaponManager: {fileID: 8652970146986642380}
   audioSrc: {fileID: 252799694548385550}
 --- !u!195 &8926231951161129285
 NavMeshAgent:
@@ -1162,7 +1124,6 @@ GameObject:
   - component: {fileID: 2858824220723207360}
   - component: {fileID: 4241368441007039215}
   - component: {fileID: 6053587909344524093}
-  - component: {fileID: 99377576628208696}
   m_Layer: 6
   m_Name: Knife
   m_TagString: Untagged
@@ -1242,24 +1203,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &99377576628208696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2427328586765786248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed27f0ca9fa26e448a5f726de41e810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 2
-  maxAmmo: 0
-  shellPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  fireCooldown: 1
-  attackRange: 1
 --- !u!1 &2443770800563876985
 GameObject:
   m_ObjectHideFlags: 0
@@ -7346,7 +7289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6414446765932104779}
-  - component: {fileID: 3330424772406274942}
+  - component: {fileID: 8652970146986642380}
   m_Layer: 6
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -7384,7 +7327,7 @@ Transform:
   - {fileID: 5648007574895663519}
   m_Father: {fileID: 6575760268555948082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3330424772406274942
+--- !u!114 &8652970146986642380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7393,15 +7336,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4975110659282344684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00d69c5f12db394c82ebab1617c8b72, type: 3}
+  m_Script: {fileID: 11500000, guid: 36d72bbf067d96e4aacbad8cf55299fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 8896433576249453710}
-  - {fileID: 8280431802035245503}
-  - {fileID: 99377576628208696}
-  Animator: {fileID: 0}
-  currentWeaponIndex: 0
+  PistolFireSpawnPoint: {fileID: 1716200549041235366}
 --- !u!1 &4985440437452256480
 GameObject:
   m_ObjectHideFlags: 0

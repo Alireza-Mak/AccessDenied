@@ -46,4 +46,10 @@ public class MouseMovement : ActiveDuringGameplay
             transform.localEulerAngles = new Vector3(verticalRotation, currentYRotation, 0);
         }
     }
+
+    public void ChangeSensitivity(float rate)
+    {
+        horizontalSensitivity /= rate;
+        verticalSensitivity /= rate;
+    }
 }

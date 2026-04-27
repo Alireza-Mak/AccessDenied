@@ -33,7 +33,6 @@ public class PlayerCharacter : ActiveDuringGameplay
             WeaponManager.StartZooming();
         }
 
-
         // Weapon switching
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

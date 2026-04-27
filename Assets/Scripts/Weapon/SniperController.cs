@@ -6,22 +6,22 @@ public class SniperController : WeaponController
     [SerializeField] private float zoomFieldOfView = 15f;
     [SerializeField] private float normalFieldOfView = 60f;
 
-    private bool isZoomed;
+    public bool IsZoomed{ get; private set; }
 
     public override void OnSecondaryActionDown()
     {
         if (!isEquipped || playerCamera == null)
             return;
 
-        isZoomed = !isZoomed;
-        playerCamera.fieldOfView = isZoomed ? zoomFieldOfView : normalFieldOfView;
+        IsZoomed = !IsZoomed;
+        playerCamera.fieldOfView = IsZoomed ? zoomFieldOfView : normalFieldOfView;
 
-        Messenger<bool>.Broadcast(GameEvent.ZOOM_CHANGED, isZoomed);
+        Messenger<bool>.Broadcast(GameEvent.ZOOM_CHANGED, IsZoomed);
     }
 
     public override void Unequip()
     {
-        if (isZoomed)
+        if (IsZoomed)
         {
             ResetZoom();
 
@@ -31,7 +31,7 @@ public class SniperController : WeaponController
 
     private void ResetZoom()
     {
-        isZoomed = false;
+        IsZoomed = false;
 
         if (playerCamera != null)
         {

@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Weapon Setting")]
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] WeaponManager WeaponManager;
+    [SerializeField] EnemyWeaponManager enemyWeaponManager;
     [SerializeField] AudioSource audioSrc;
 
     void Awake()
@@ -94,9 +94,9 @@ public class Enemy : MonoBehaviour
 
     public void ShootEvent()
     {
-        WeaponManager.GetCurrentWeapon().PlayMuzzleFlash();
+        enemyWeaponManager.PlayMuzzleFlash();
 
-        Vector3 spawnPos = WeaponManager.GetCurrentWeapon().FireSpawnPoint.position;
+        Vector3 spawnPos = enemyWeaponManager.PistolFireSpawnPoint.position;
         Vector3 target = Player.transform.Find("PlayerCamera").transform.position;
         Vector3 direction = (target - spawnPos).normalized;
 
